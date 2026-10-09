@@ -1,0 +1,23 @@
+# Validates the ledger with the official Beancount checker on every push.
+# Ledger X shows the result of this workflow on its Overview page.
+name: bean-check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beancount beanquery
+      - name: bean-check
+        run: bean-check main.bean
+      - name: Smoke-test the saved queries
+        run: |
+          bean-query main.bean "SELECT account, SUM(position) WHERE account ~ '^Assets:' GROUP BY account ORDER BY account"

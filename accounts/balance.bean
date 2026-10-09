@@ -1,0 +1,133 @@
+; 余额断言：每月 1 日核对一次（演示数据）
+
+2025-02-01 balance Assets:Bank:CMB                 69034.47 CNY
+2025-02-01 balance Assets:Bank:ICBC                31700.00 CNY
+2025-02-01 balance Assets:EWallet:Alipay            3107.92 CNY
+2025-02-01 balance Assets:EWallet:WeChat            1800.10 CNY
+2025-02-01 balance Liabilities:CreditCard:CMB       -651.73 CNY
+
+2025-03-01 balance Assets:Bank:CMB                 87949.14 CNY
+2025-03-01 balance Assets:Bank:ICBC                31700.00 CNY
+2025-03-01 balance Assets:EWallet:Alipay            3478.42 CNY
+2025-03-01 balance Assets:EWallet:WeChat            2297.30 CNY
+2025-03-01 balance Liabilities:CreditCard:CMB      -2220.04 CNY
+
+2025-04-01 balance Assets:Bank:CMB                105055.35 CNY
+2025-04-01 balance Assets:Bank:ICBC                31700.00 CNY
+2025-04-01 balance Assets:EWallet:Alipay            4025.34 CNY
+2025-04-01 balance Assets:EWallet:WeChat            3186.70 CNY
+2025-04-01 balance Liabilities:CreditCard:CMB       -995.34 CNY
+
+2025-05-01 balance Assets:Bank:CMB                 87173.90 CNY
+2025-05-01 balance Assets:Bank:ICBC                31700.00 CNY
+2025-05-01 balance Assets:EWallet:Alipay            3732.04 CNY
+2025-05-01 balance Assets:EWallet:WeChat            4043.80 CNY
+2025-05-01 balance Liabilities:CreditCard:CMB       -872.60 CNY
+
+2025-06-01 balance Assets:Bank:CMB                103014.12 CNY
+2025-06-01 balance Assets:Bank:ICBC                31400.00 CNY
+2025-06-01 balance Assets:EWallet:Alipay            3907.76 CNY
+2025-06-01 balance Assets:EWallet:WeChat            4763.40 CNY
+2025-06-01 balance Liabilities:CreditCard:CMB      -1589.61 CNY
+
+2025-07-01 balance Assets:Bank:CMB                121171.28 CNY
+2025-07-01 balance Assets:Bank:ICBC                31400.00 CNY
+2025-07-01 balance Assets:EWallet:Alipay            4138.20 CNY
+2025-07-01 balance Assets:EWallet:WeChat            5465.00 CNY
+2025-07-01 balance Liabilities:CreditCard:CMB      -3313.10 CNY
+
+2025-08-01 balance Assets:Bank:CMB                101205.48 CNY
+2025-08-01 balance Assets:Bank:ICBC                31400.00 CNY
+2025-08-01 balance Assets:EWallet:Alipay            3418.33 CNY
+2025-08-01 balance Assets:EWallet:WeChat            6078.30 CNY
+2025-08-01 balance Liabilities:CreditCard:CMB      -1986.62 CNY
+
+2025-09-01 balance Assets:Bank:CMB                118269.51 CNY
+2025-09-01 balance Assets:Bank:ICBC                31400.00 CNY
+2025-09-01 balance Assets:EWallet:Alipay            3502.16 CNY
+2025-09-01 balance Assets:EWallet:WeChat            6460.40 CNY
+2025-09-01 balance Liabilities:CreditCard:CMB      -1403.25 CNY
+
+2025-10-01 balance Assets:Bank:CMB                135470.90 CNY
+2025-10-01 balance Assets:Bank:ICBC                31100.00 CNY
+2025-10-01 balance Assets:EWallet:Alipay            3802.42 CNY
+2025-10-01 balance Assets:EWallet:WeChat            6853.00 CNY
+2025-10-01 balance Liabilities:CreditCard:CMB       -796.59 CNY
+
+2025-11-01 balance Assets:Bank:CMB                110477.88 CNY
+2025-11-01 balance Assets:Bank:ICBC                31100.00 CNY
+2025-11-01 balance Assets:EWallet:Alipay            4110.28 CNY
+2025-11-01 balance Assets:EWallet:WeChat            7585.10 CNY
+2025-11-01 balance Liabilities:CreditCard:CMB       -743.74 CNY
+
+2025-12-01 balance Assets:Bank:CMB                129258.34 CNY
+2025-12-01 balance Assets:Bank:ICBC                31100.00 CNY
+2025-12-01 balance Assets:EWallet:Alipay            4176.90 CNY
+2025-12-01 balance Assets:EWallet:WeChat            8356.80 CNY
+2025-12-01 balance Liabilities:CreditCard:CMB      -1577.67 CNY
+
+2026-01-01 balance Assets:Bank:CMB                146979.22 CNY
+2026-01-01 balance Assets:Bank:ICBC                31100.00 CNY
+2026-01-01 balance Assets:EWallet:Alipay            4674.18 CNY
+2026-01-01 balance Assets:EWallet:WeChat            9092.10 CNY
+2026-01-01 balance Liabilities:CreditCard:CMB      -1871.48 CNY
+
+2026-02-01 balance Assets:Bank:CMB                129011.44 CNY
+2026-02-01 balance Assets:Bank:ICBC                30800.00 CNY
+2026-02-01 balance Assets:EWallet:Alipay            5080.04 CNY
+2026-02-01 balance Assets:EWallet:WeChat            9803.40 CNY
+2026-02-01 balance Liabilities:CreditCard:CMB       -544.17 CNY
+
+2026-03-01 balance Assets:Bank:CMB                148307.19 CNY
+2026-03-01 balance Assets:Bank:ICBC                30800.00 CNY
+2026-03-01 balance Assets:EWallet:Alipay            5549.60 CNY
+2026-03-01 balance Assets:EWallet:WeChat            7963.80 CNY
+2026-03-01 balance Liabilities:CreditCard:CMB       -752.70 CNY
+
+2026-04-01 balance Assets:Bank:CMB                166550.60 CNY
+2026-04-01 balance Assets:Bank:ICBC                30800.00 CNY
+2026-04-01 balance Assets:EWallet:Alipay            5971.85 CNY
+2026-04-01 balance Assets:EWallet:WeChat            8402.50 CNY
+2026-04-01 balance Liabilities:CreditCard:CMB       -642.00 CNY
+
+2026-05-01 balance Assets:Bank:CMB                148725.18 CNY
+2026-05-01 balance Assets:Bank:ICBC                30800.00 CNY
+2026-05-01 balance Assets:EWallet:Alipay            6066.56 CNY
+2026-05-01 balance Assets:EWallet:WeChat            8918.50 CNY
+2026-05-01 balance Liabilities:CreditCard:CMB       -873.12 CNY
+
+2026-06-01 balance Assets:Bank:CMB                166796.98 CNY
+2026-06-01 balance Assets:Bank:ICBC                30500.00 CNY
+2026-06-01 balance Assets:EWallet:Alipay            6032.25 CNY
+2026-06-01 balance Assets:EWallet:WeChat            9634.30 CNY
+2026-06-01 balance Liabilities:CreditCard:CMB      -1501.03 CNY
+
+2026-07-01 balance Assets:Bank:CMB                185170.79 CNY
+2026-07-01 balance Assets:Bank:ICBC                30500.00 CNY
+2026-07-01 balance Assets:EWallet:Alipay            6430.09 CNY
+2026-07-01 balance Assets:EWallet:WeChat           10186.40 CNY
+2026-07-01 balance Liabilities:CreditCard:CMB      -1021.76 CNY
+
+2026-08-01 balance Assets:Bank:CMB                167417.11 CNY
+2026-08-01 balance Assets:Bank:ICBC                30500.00 CNY
+2026-08-01 balance Assets:EWallet:Alipay            6382.85 CNY
+2026-08-01 balance Assets:EWallet:WeChat           10355.50 CNY
+2026-08-01 balance Liabilities:CreditCard:CMB      -2074.74 CNY
+
+2026-09-01 balance Assets:Bank:CMB                185096.57 CNY
+2026-09-01 balance Assets:Bank:ICBC                30500.00 CNY
+2026-09-01 balance Assets:EWallet:Alipay            6775.49 CNY
+2026-09-01 balance Assets:EWallet:WeChat           10907.20 CNY
+2026-09-01 balance Liabilities:CreditCard:CMB       -863.50 CNY
+
+2026-10-01 balance Assets:Bank:CMB                215785.80 CNY
+2026-10-01 balance Assets:Bank:ICBC                30200.00 CNY
+2026-10-01 balance Assets:EWallet:Alipay            7194.38 CNY
+2026-10-01 balance Assets:EWallet:WeChat           11289.20 CNY
+2026-10-01 balance Liabilities:CreditCard:CMB       -407.36 CNY
+
+2026-10-08 balance Assets:Bank:CMB                211285.80 CNY
+2026-10-08 balance Assets:Bank:ICBC                30200.00 CNY
+2026-10-08 balance Assets:EWallet:Alipay            7010.78 CNY
+2026-10-08 balance Assets:EWallet:WeChat           11131.90 CNY
+2026-10-08 balance Liabilities:CreditCard:CMB      -2228.46 CNY
