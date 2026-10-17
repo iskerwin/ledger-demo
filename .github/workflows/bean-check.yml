@@ -21,3 +21,5 @@ jobs:
       - name: Smoke-test the saved queries
         run: |
           bean-query main.bean "SELECT account, SUM(position) WHERE account ~ '^Assets:' GROUP BY account ORDER BY account"
+      - name: Verify demo scenarios and all saved queries
+        run: python tools/verify.py

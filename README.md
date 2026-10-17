@@ -1,90 +1,76 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/iskerwin/ledger-x/main/docs/promo/hero.png" alt="Ledger X" width="100%">
-</p>
-
 # Ledger X 演示账本
 
-这是一份**完全虚构**的 [Beancount](https://beancount.github.io) 账本，用来体验 iOS App [**Ledger X**](https://github.com/iskerwin/ledger-x)。它模拟了一位上海上班族从 2025 年 1 月到 2026 年 10 月的日常收支：约 2000 笔交易、每月余额断言、信用卡还款、美股定投、公司报销……App 里的每个功能都能在这里找到对应的数据。
+这是 [Ledger X iOS App](https://github.com/iskerwin/ledger-x) 的统一演示数据源。所有人名、公司和金额均为虚构，用来体验记账、投资、订阅、预算、工资、往来款与报销等功能。
 
-> 想用自己的真实账本？先用这份演示账本熟悉 App，再把 Token 换成你自己的仓库即可。
+账本以原 `ledger-x/Ledger/Demo` 为基础整理，包含 **2025-01-01 至 2026-10-17 的 2,037 笔交易**、110 条余额断言、141 条价格记录，以及 14 笔带 `#demo-classic` 标签的经典示例。后续在本仓库维护数据，不再维护 App 内的一份副本。
 
-## 三分钟上手
+## 在 App 中体验
 
-1. **Fork 本仓库**（右上角 Fork）。建议保持 Public 或改成 Private 都可以，App 只通过你的 Token 访问。
-2. **创建 GitHub Token**：GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token
-   - Repository access：**Only select repositories** → 选你 fork 出来的 `ledger-demo`
-   - Permissions → Contents：**Read and write**
-   - Permissions → Actions：**Read-only**（可选，用来在 App 里显示 bean-check 结果）
-3. **安装 Ledger X**：从 [Releases](https://github.com/iskerwin/ledger-x/releases/latest) 下载 `Ledger.ipa`，用 SideStore / AltStore 签名安装。
-4. **连接**：打开 App，填写用户名（你的 GitHub 用户名）、仓库 `ledger-demo`、分支 `main` 和 Token，点「连接」。
+支持在线演示账本的新版本 App：点「先看看演示账本」，首次联网下载本仓库的公开数据，无需账号或 Token。下载后可离线查看和编辑；改动只保存在手机上，不写回本仓库。点「重置演示账本」会下载最新数据，成功后覆盖本机演示修改；下载失败则保留旧数据。旧版本 App 仍使用安装包自带的演示账本。
 
-几秒后账本加载完成，就可以开始体验了。在 App 里记的每一笔都会成为这个仓库里的一次 Git 提交，随时可以在 GitHub 上看到改动。
+想体验真实的 Git 同步：
 
-## 推荐体验路线
+1. Fork 本仓库到自己的 GitHub 账号。
+2. 创建仅能访问该 Fork 的 Fine-grained Token，赋予 Contents: Read and write；如需查看校验状态，再赋予 Actions: Read-only。
+3. 在 App 中连接你的用户名、仓库 `ledger-demo`、分支 `main` 和 Token。
 
-| 页面 | 试试这些 |
-| --- | --- |
-| **记账** | 常用交易里点「入账」一键记一笔「瑞幸 拿铁」；手动记一笔支出，看底部实时生成的 Beancount 文本；切到「文本」直接写一条 `price` |
-| **概览** | 切换月 / 年、点柱形查看某月；看「支出构成」「商户支出排行」；点「待报销垫款」把最近几笔滴滴打车登记为报销回款 |
-| **明细** | 搜索 `#trip-tokyo`、`^refund-618`、`星巴克`、`>1000`、`2025-10`；打开一笔交易「复制为新交易」或「登记退款」 |
-| **账户** | 看净资产和资产负债率；打开「招商银行储蓄卡」做一次「余额核对」；左滑某条余额断言试试编辑 / 删除；打开「投资持仓」看 VOO 与 AAPL 的批次和浮动盈亏 |
-| **报表** | 损益表切换「本年 / 上年」；资产负债表看净资产走势；试算平衡表；「账本中的查询」运行 `main.bean` 和 `queries/reports.bql` 里预置的查询，再改写一条保存为「我的查询」 |
-| **设置** | 换个主题色、切换 English、打开面容 ID 锁定 |
+此时 App 的修改会提交到你的 Fork。不要把 Token 写入账本文件或 App 源码。
 
-## 账本里有什么
+## 经典示例：可以照着体验
 
-| 场景 | 数据 |
-| --- | --- |
-| 日常消费 | 早餐、午餐、咖啡（瑞幸 / 星巴克 / Manner）、地铁、打车、周末聚餐、买菜、网购，分别用信用卡、支付宝、微信、现金支付 |
-| 固定收支 | 每月工资、房租、电费、话费、iCloud、音乐会员；季度活期利息；2026 年 9 月季度奖金 |
-| 信用卡 | 招商银行信用卡每月 10 日全额还款；积分返现 |
-| 转账 | 每月给支付宝、微信充值；不定期 ATM 取现（`#transfer`） |
-| 外币与投资 | 每季度换汇入金到盈透证券（`@` 汇率，`#fx`）；每月定投 2 股 VOO（按成本 `{}` 记账）；买入、按 FIFO 卖出 AAPL 并结转收益；季度分红 |
-| 报销 | 工作日偶尔垫付的客户拜访打车计入 `Assets:Receivable:Reimbursement`，每两个月公司统一报销，用 `#reimbursed ^reimburse-YYYYMMDD` 关联；最近几笔尚未报销 |
-| 退款 | 618 购买扫地机器人后的价保退款，用 `^refund-618` 关联 |
-| 旅行 | 成都、东京两次旅行的机票和酒店（`#trip-chengdu`、`#trip-tokyo`） |
-| 待确认 | 一笔标记为 `!` 的显示器订单 |
-| 余额断言 | 每月 1 日核对储蓄卡、支付宝、微信和信用卡余额，全部通过 |
-| 价格 | 每两周一次的 USD/CNY 汇率与 VOO、AAPL 股价 |
-| 查询 | `main.bean` 中的 `query` 指令，以及 `queries/reports.bql` 中的 5 条常用 BQL |
+在明细搜索 `#demo-classic`，或选择已保存的「经典示例」搜索。
 
-## 目录结构
+| 场景 | 日期和入口 | 可观察的结果 |
+| --- | --- | --- |
+| 混合付款与部分退款 | 10 月 16–17 日，搜索 `^refund-uniqlo-20261016` | 原价 600 元，信用卡付 450、支付宝付 150；两次退款 120 和 80 元，净支出 400 元，退款分别回到原付款账户 |
+| AA 分摊与分次还款 | 10 月 16–17 日，个人往来页 | 先支付 90 元结清小陈此前代买的电影票；聚餐 480 元三人均摊，自己只计 160 元支出。小陈先还 100 元，尚欠 60 元；小林尚欠 160 元 |
+| 多笔垫付、分批报销 | 搜索 `^reimburse-shili-20261017` | 酒店 680 元、车票 200 元，收到 500 和 380 元两笔回款后结清；垫款和回款不计个人消费或收入 |
+| 出差事件与待报销 | 搜索 `#trip-hangzhou`，事件页「杭州出差」 | 已结清酒店和车票，返程打车 86 元仍待报销，可继续体验登记回款 |
+| 外币订阅 | 订阅页「GitHub Copilot」 | 10 月 16 日支付 10 USD，查看原币扣费、人民币折算和下次续费 |
+| 订阅升级补差 | 搜索 `^sub-icloud` | 10 月 17 日补差 20 元，标记 `topup: TRUE`，可查看补差与正常续费的区别 |
+| 试用期与手动续费 | 订阅页「效率工具（试用）」 | 10 月 23 日试用结束，月费 38 元，尚未扣费；体验到期提醒和未来现金流。提醒状态随当前日期变化 |
+| 一张小票拆分类 | 10 月 17 日「盒马」 | 食材 128 元、日用品 52 元，同一笔支付宝付款 180 元，分别进入两个支出分类 |
 
+## 其他功能数据
+
+- **日常收支**：餐饮、咖啡、通勤、房租、水电、购物、医疗、红包、慈善。
+- **账户与信用卡**：招行、工行、现金、支付宝、微信；信用卡账单日 1 日、还款日 10 日，额度 50,000 元，含还款和积分返现。
+- **投资**：USD 换汇、VOO 定投、AAPL 买卖、FIFO 成本批次、分红与已实现/未实现收益；价格为虚构历史数据。
+- **工资与公司往来**：基本工资、补贴、代扣个税、请假扣款、少发与补发、公司备用金。
+- **个人往来**：借出、还款、AA 和朋友代付，按 `person:` 区分对象。
+- **预算**：餐饮每月 3,500 元、购物 1,500 元、交通 600 元、订阅 300 元。
+- **订阅历史**：iCloud+ 调价、网易云音乐取消、坚果云年费。
+- **旅行**：成都、东京、杭州三个事件；东京含 JPY 消费。
+- **待确认**：2026-10-06 京东显示器 1,699 元，使用 `!` 标记。
+- **报表与查询**：损益、资产负债、净资产走势、预算、现金流预测；主账本 2 条查询，独立文件 5 条查询。
+
+## 文件结构
+
+```text
+main.bean                   入口、选项、include 和查询
+ledger-x.json               App 布局、工资模板、扫码卡号映射、保存的搜索
+accounts/accounts.bean      账户、分类和信用卡属性
+accounts/balance.bean       历史余额断言
+config/commodities.bean     CNY / USD / JPY / VOO / AAPL
+config/budgets.bean          月度预算
+config/subscriptions.bean   订阅及变更历史
+config/events.bean          旅行和出差事件
+journals/2025.bean           2025 年交易
+journals/2026.bean           2026 年交易和经典示例
+prices.bean                 历史汇率、股价
+queries/reports.bql          常用 BQL 查询
+tools/verify.py              官方校验、查询和关键示例金额验证
 ```
-main.bean                 主文件：选项、include、query 指令
-config/commodities.bean   币种与证券
-accounts/accounts.bean    开户（含 FIFO 记账方法、账户中文名）
-accounts/balance.bean     余额断言
-journals/2025.bean        2025 年交易
-journals/2026.bean        2026 年交易（App 新记的交易会写在这里）
-prices.bean               汇率与股价
-queries/reports.bql       常用查询（「-- 标题」作为查询名）
-tools/generate.py         生成以上数据的脚本
-.github/workflows/        每次推送自动运行官方 bean-check
-```
 
-这也是 Ledger X 推荐的仓库结构：交易按年份分文件，余额断言、价格各放一处。App 会自动识别，新的一年会自动创建 `journals/2027.bean` 并在 `main.bean` 中加上 `include`。
-
-## 在电脑上查看
+## 校验与维护
 
 ```bash
 pip install beancount beanquery fava
-bean-check main.bean        # 校验
-fava main.bean              # 浏览器打开 http://localhost:5000
+bean-check main.bean
+python3 tools/verify.py
+fava main.bean
 ```
 
-App 里的报表（损益表、资产负债表、试算平衡表、BQL 查询）与 Fava 的结果一致，可以对照着看。
+推送和 PR 会自动执行校验。新增示例应检查分录平衡、历史余额断言、关联链接和查询，并更新体验指南。新增历史交易可能影响后续余额断言；新场景优先写在最后一次断言之后。演示中有意保留未收个人往来、待报销垫款和待确认订单。
 
-## 重新生成
-
-演示数据由 `tools/generate.py` 生成，结果固定（随机种子不变）：
-
-```bash
-python3 tools/generate.py
-```
-
-注意：重新生成会覆盖 `journals/`、`accounts/` 和 `prices.bean`，包括你在 App 里记的内容。想恢复到初始状态时可以这样做，或者直接在 GitHub 上同步上游仓库。
-
----
-
-所有人名、公司、金额均为虚构，仅供演示。
+旧 `tools/generate.py` 已移除，避免生成旧版数据覆盖预算、订阅、工资和往来示例。需要恢复体验数据时，重新获取本仓库，或在 App 内重置演示账本。手机本地修改不会自动跟随公共仓库更新。

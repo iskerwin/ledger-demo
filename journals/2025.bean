@@ -1,16 +1,16 @@
 ; 2025 年交易（演示数据，全部为虚构）
 
 2025-01-01 * "期初余额" "开账"
+  Equity:Opening-Balances
   Assets:Bank:CMB                                  86000.00 CNY
   Assets:Bank:ICBC                                 32000.00 CNY
   Assets:EWallet:Alipay                             2600.00 CNY
   Assets:EWallet:WeChat                             3000.00 CNY
   Assets:Cash                                        600.00 CNY
-  Equity:Opening-Balances
 
 2025-01-01 * "期初余额" "券商账户开账"
-  Assets:Brokerage:IBKR:Cash                        3000.00 USD
   Equity:Opening-Balances
+  Assets:Brokerage:IBKR:Cash                        3000.00 USD
 
 2025-01-01 * "房东" "房租"
   Expenses:Housing:Rent                             4500.00 CNY
@@ -48,11 +48,11 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-01-03 * "中国联通" "话费"
+2025-01-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-01-03 * "Apple" "iCloud+"
+2025-01-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -129,6 +129,7 @@
   Assets:EWallet:Alipay                               -6.00 CNY
 
 2025-01-12 * "IBKR" "换汇入金" #fx
+  exchange_rate: "1 USD = 7.1914 CNY"
   Assets:Brokerage:IBKR:Cash                        5000.00 USD @ 7.1914 CNY
   Assets:Bank:CMB                                 -35957.00 CNY
 
@@ -196,7 +197,7 @@
   Expenses:Food:Meals                                 76.60 CNY
   Liabilities:CreditCard:CMB                         -76.60 CNY
 
-2025-01-18 * "网易云音乐" "会员"
+2025-01-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -256,8 +257,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-01-22 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250220
+2025-01-22 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250220
   Assets:Receivable:Reimbursement                     60.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -60.10 CNY
 
 2025-01-23 * "包子铺" "早餐"
@@ -284,9 +287,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-01-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-01-25 * "示例科技有限公司" "2025-01 工资" ^salary-shili-202501
+  payslip_days: 23
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-01-26 * "支付宝" "余额充值" #transfer
   Assets:EWallet:Alipay                             1500.00 CNY
@@ -376,11 +383,11 @@
   Expenses:Transit:Taxi                               49.90 CNY
   Assets:EWallet:Alipay                              -49.90 CNY
 
-2025-02-03 * "中国联通" "话费"
+2025-02-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-02-03 * "Apple" "iCloud+"
+2025-02-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -552,7 +559,7 @@
   Expenses:Shopping:Digital                          446.13 CNY
   Liabilities:CreditCard:CMB                        -446.13 CNY
 
-2025-02-18 * "网易云音乐" "会员"
+2025-02-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -584,8 +591,10 @@
   Expenses:Food:Meals                                 28.10 CNY
   Liabilities:CreditCard:CMB                         -28.10 CNY
 
-2025-02-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250420
+2025-02-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250420
   Assets:Receivable:Reimbursement                     65.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -65.20 CNY
 
 2025-02-20 * "全家" "早餐"
@@ -604,7 +613,7 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-02-20 * "示例科技有限公司" "差旅报销 1 笔" #reimbursed ^reimburse-20250220
+2025-02-20 * "示例科技有限公司" "差旅报销 1 笔" #reimbursement ^reimburse-shili-20250220
   Assets:Bank:CMB                                     60.10 CNY
   Assets:Receivable:Reimbursement                    -60.10 CNY
 
@@ -648,9 +657,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-02-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-02-25 * "示例科技有限公司" "2025-02 工资" ^salary-shili-202502
+  payslip_days: 20
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-02-25 * "西贝" "午餐"
   Expenses:Food:Meals                                 76.20 CNY
@@ -728,11 +741,11 @@
   Expenses:Food:Groceries                             15.50 CNY
   Assets:Cash                                        -15.50 CNY
 
-2025-03-03 * "中国联通" "话费"
+2025-03-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-03-03 * "Apple" "iCloud+"
+2025-03-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -876,6 +889,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
+2025-03-15 * "坚果云" "年费" ^sub-jianguoyun
+  Expenses:Subscription:Cloud                        199.00 CNY
+  Liabilities:CreditCard:CMB                        -199.00 CNY
+
 2025-03-15 * "美团外卖" "晚餐"
   Expenses:Food:Dining                                34.40 CNY
   Assets:EWallet:WeChat                              -34.40 CNY
@@ -896,7 +913,7 @@
   Expenses:Food:Meals                                 22.70 CNY
   Assets:EWallet:WeChat                              -22.70 CNY
 
-2025-03-18 * "网易云音乐" "会员"
+2025-03-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -933,8 +950,8 @@
   Assets:EWallet:WeChat                              -15.50 CNY
 
 2025-03-21 * "招商银行" "活期利息"
-  Assets:Bank:CMB                                    102.15 CNY
   Income:Invest:Interest                            -102.15 CNY
+  Assets:Bank:CMB                                    102.15 CNY
 
 2025-03-21 * "西贝" "午餐"
   Expenses:Food:Meals                                 78.00 CNY
@@ -964,9 +981,13 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-03-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-03-25 * "示例科技有限公司" "2025-03 工资" ^salary-shili-202503
+  payslip_days: 21
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-03-25 * "包子铺" "早餐"
   Expenses:Food:Meals                                  7.60 CNY
@@ -1008,8 +1029,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-03-26 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250420
+2025-03-26 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250420
   Assets:Receivable:Reimbursement                     32.80 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -32.80 CNY
 
 2025-03-27 * "包子铺" "早餐"
@@ -1029,8 +1052,8 @@
   Assets:EWallet:Alipay                               -5.00 CNY
 
 2025-03-28 * "IBKR" "VOO 分红"
-  Assets:Brokerage:IBKR:Cash                          10.20 USD
   Income:Invest:Dividend                             -10.20 USD
+  Assets:Brokerage:IBKR:Cash                          10.20 USD
 
 2025-03-28 * "包子铺" "早餐"
   Expenses:Food:Meals                                  7.20 CNY
@@ -1065,8 +1088,8 @@
   Assets:EWallet:Alipay                              -40.90 CNY
 
 2025-03-30 * "招商银行" "信用卡积分返现"
-  Liabilities:CreditCard:CMB                          50.00 CNY
   Income:Rewards                                     -50.00 CNY
+  Liabilities:CreditCard:CMB                          50.00 CNY
 
 2025-03-31 * "麦当劳" "早餐"
   Expenses:Food:Meals                                 19.60 CNY
@@ -1100,8 +1123,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-04-01 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-01 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     39.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -39.40 CNY
 
 2025-04-02 * "西贝" "午餐"
@@ -1112,11 +1137,11 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-04-03 * "中国联通" "话费"
+2025-04-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-04-03 * "Apple" "iCloud+"
+2025-04-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -1180,8 +1205,10 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-04-07 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-07 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     86.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -86.20 CNY
 
 2025-04-07 * "京东" "日用品"
@@ -1204,8 +1231,10 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-04-08 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-08 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     70.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -70.10 CNY
 
 2025-04-09 * "包子铺" "早餐"
@@ -1229,8 +1258,8 @@
   Assets:EWallet:Alipay                             -478.97 CNY
 
 2025-04-10 * "招商银行信用卡" "还款" #transfer
-  Liabilities:CreditCard:CMB                        1333.45 CNY
-  Assets:Bank:CMB                                  -1333.45 CNY
+  Liabilities:CreditCard:CMB                        1532.45 CNY
+  Assets:Bank:CMB                                  -1532.45 CNY
 
 2025-04-10 * "沙县小吃" "午餐"
   Expenses:Food:Meals                                 19.80 CNY
@@ -1249,6 +1278,7 @@
   Assets:EWallet:Alipay                              -56.10 CNY
 
 2025-04-12 * "IBKR" "换汇入金" #fx
+  exchange_rate: "1 USD = 7.2492 CNY"
   Assets:Brokerage:IBKR:Cash                        5000.00 USD @ 7.2492 CNY
   Assets:Bank:CMB                                 -36246.00 CNY
 
@@ -1280,8 +1310,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-04-15 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-15 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     39.50 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -39.50 CNY
 
 2025-04-16 * "包子铺" "早餐"
@@ -1300,15 +1332,17 @@
   Expenses:Food:Meals                                 23.50 CNY
   Assets:EWallet:Alipay                              -23.50 CNY
 
-2025-04-17 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-17 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     64.70 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -64.70 CNY
 
 2025-04-17 * "Apple" "配件"
   Expenses:Shopping:Digital                          485.92 CNY
   Liabilities:CreditCard:CMB                        -485.92 CNY
 
-2025-04-18 * "网易云音乐" "会员"
+2025-04-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -1332,7 +1366,7 @@
   Expenses:Food:Groceries                             51.80 CNY
   Assets:Cash                                        -51.80 CNY
 
-2025-04-20 * "示例科技有限公司" "差旅报销 2 笔" #reimbursed ^reimburse-20250420
+2025-04-20 * "示例科技有限公司" "差旅报销 2 笔" #reimbursement ^reimburse-shili-20250420
   Assets:Bank:CMB                                     98.00 CNY
   Assets:Receivable:Reimbursement                    -98.00 CNY
 
@@ -1380,9 +1414,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-04-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-04-25 * "示例科技有限公司" "2025-04 工资" ^salary-shili-202504
+  payslip_days: 22
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-04-25 * "包子铺" "早餐"
   Expenses:Food:Meals                                  8.50 CNY
@@ -1452,8 +1490,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-04-30 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-04-30 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     31.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -31.20 CNY
 
 2025-05-01 * "房东" "房租"
@@ -1484,15 +1524,17 @@
   Expenses:Food:Meals                                 62.00 CNY
   Assets:EWallet:Alipay                              -62.00 CNY
 
-2025-05-02 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-05-02 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     79.80 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -79.80 CNY
 
-2025-05-03 * "中国联通" "话费"
+2025-05-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-05-03 * "Apple" "iCloud+"
+2025-05-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -1672,7 +1714,7 @@
   Expenses:Food:Dining                                40.40 CNY
   Liabilities:CreditCard:CMB                         -40.40 CNY
 
-2025-05-18 * "网易云音乐" "会员"
+2025-05-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -1740,9 +1782,13 @@
   Expenses:Transit:Taxi                               48.70 CNY
   Assets:EWallet:Alipay                              -48.70 CNY
 
-2025-05-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-05-25 * "示例科技有限公司" "2025-05 工资" ^salary-shili-202505
+  payslip_days: 22
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-05-25 * "菜市场" "买菜"
   Expenses:Food:Groceries                             26.70 CNY
@@ -1808,8 +1854,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-05-29 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250620
+2025-05-29 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250620
   Assets:Receivable:Reimbursement                     30.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -30.20 CNY
 
 2025-05-30 * "全家" "早餐"
@@ -1848,11 +1896,11 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-06-03 * "中国联通" "话费"
+2025-06-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-06-03 * "Apple" "iCloud+"
+2025-06-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -2040,7 +2088,7 @@
   Expenses:Shopping:Digital                          407.70 CNY
   Liabilities:CreditCard:CMB                        -407.70 CNY
 
-2025-06-18 * "网易云音乐" "会员"
+2025-06-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -2056,7 +2104,7 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-06-18 * "京东" "扫地机器人" ^refund-618
+2025-06-18 * "京东" "扫地机器人" ^refund-jingdong-20250618
   Expenses:Shopping:Digital                         2399.00 CNY
   Liabilities:CreditCard:CMB                       -2399.00 CNY
 
@@ -2088,13 +2136,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-06-20 * "示例科技有限公司" "差旅报销 8 笔" #reimbursed ^reimburse-20250620
+2025-06-20 * "示例科技有限公司" "差旅报销 8 笔" #reimbursement ^reimburse-shili-20250620
   Assets:Bank:CMB                                    441.10 CNY
   Assets:Receivable:Reimbursement                   -441.10 CNY
 
 2025-06-21 * "招商银行" "活期利息"
-  Assets:Bank:CMB                                    103.40 CNY
   Income:Invest:Interest                            -103.40 CNY
+  Assets:Bank:CMB                                    103.40 CNY
 
 2025-06-21 * "海底捞" "晚餐"
   Expenses:Food:Dining                               318.60 CNY
@@ -2132,9 +2180,13 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-06-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-06-25 * "示例科技有限公司" "2025-06 工资" ^salary-shili-202506
+  payslip_days: 21
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-06-25 * "麦当劳" "早餐"
   Expenses:Food:Meals                                 13.70 CNY
@@ -2148,7 +2200,7 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-06-25 * "京东" "扫地机器人 价保退款" ^refund-618
+2025-06-25 * "京东" "扫地机器人 价保退款" #refund ^refund-jingdong-20250618
   Expenses:Shopping:Digital                         -200.00 CNY
   Liabilities:CreditCard:CMB                         200.00 CNY
 
@@ -2177,8 +2229,8 @@
   Assets:EWallet:Alipay                               -5.00 CNY
 
 2025-06-28 * "IBKR" "VOO 分红"
-  Assets:Brokerage:IBKR:Cash                          20.40 USD
   Income:Invest:Dividend                             -20.40 USD
+  Assets:Brokerage:IBKR:Cash                          20.40 USD
 
 2025-06-28 * "海底捞" "晚餐"
   Expenses:Food:Dining                               297.80 CNY
@@ -2232,11 +2284,11 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-07-03 * "中国联通" "话费"
+2025-07-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-07-03 * "Apple" "iCloud+"
+2025-07-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -2248,8 +2300,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-07-03 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250820
+2025-07-03 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250820
   Assets:Receivable:Reimbursement                     65.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -65.20 CNY
 
 2025-07-04 * "麦当劳" "早餐"
@@ -2260,8 +2314,10 @@
   Expenses:Food:Meals                                 18.50 CNY
   Liabilities:CreditCard:CMB                         -18.50 CNY
 
-2025-07-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250820
+2025-07-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250820
   Assets:Receivable:Reimbursement                     62.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -62.10 CNY
 
 2025-07-05 * "滴滴出行" "打车"
@@ -2353,8 +2409,14 @@
   Liabilities:CreditCard:CMB                        -532.54 CNY
 
 2025-07-12 * "IBKR" "换汇入金" #fx
+  exchange_rate: "1 USD = 7.1919 CNY"
   Assets:Brokerage:IBKR:Cash                        5000.00 USD @ 7.1919 CNY
   Assets:Bank:CMB                                 -35959.50 CNY
+
+2025-07-12 * "小王" "借出"
+  Assets:Receivable:Personal                        3000.00 CNY
+    person: "小王"
+  Assets:Bank:CMB                                  -3000.00 CNY
 
 2025-07-13 * "海底捞" "晚餐"
   Expenses:Food:Dining                               221.10 CNY
@@ -2428,7 +2490,7 @@
   Expenses:Food:Drinks                                31.80 CNY
   Assets:EWallet:WeChat                              -31.80 CNY
 
-2025-07-18 * "网易云音乐" "会员"
+2025-07-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -2444,8 +2506,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-07-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250820
+2025-07-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250820
   Assets:Receivable:Reimbursement                     71.30 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -71.30 CNY
 
 2025-07-19 * "滴滴出行" "打车"
@@ -2484,8 +2548,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-07-22 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250820
+2025-07-22 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250820
   Assets:Receivable:Reimbursement                     46.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -46.40 CNY
 
 2025-07-23 * "全家" "早餐"
@@ -2520,9 +2586,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-07-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-07-25 * "示例科技有限公司" "2025-07 工资" ^salary-shili-202507
+  payslip_days: 23
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-07-25 * "食堂" "午餐"
   Expenses:Food:Meals                                 15.70 CNY
@@ -2572,8 +2642,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-07-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20250820
+2025-07-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20250820
   Assets:Receivable:Reimbursement                     70.20 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -70.20 CNY
 
 2025-07-29 * "全家" "早餐"
@@ -2632,8 +2704,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-08-01 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-08-01 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     87.00 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -87.00 CNY
 
 2025-08-02 * "海底捞" "晚餐"
@@ -2652,11 +2726,11 @@
   Expenses:Shopping:Household                        185.56 CNY
   Liabilities:CreditCard:CMB                        -185.56 CNY
 
-2025-08-03 * "中国联通" "话费"
+2025-08-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-08-03 * "Apple" "iCloud+"
+2025-08-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -2680,8 +2754,10 @@
   Expenses:Food:Meals                                 64.50 CNY
   Assets:EWallet:Alipay                              -64.50 CNY
 
-2025-08-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-08-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     34.30 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -34.30 CNY
 
 2025-08-05 * "麦当劳" "早餐"
@@ -2768,8 +2844,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-08-12 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-08-12 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     58.70 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -58.70 CNY
 
 2025-08-13 * "食堂" "午餐"
@@ -2808,6 +2886,11 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
+2025-08-15 * "小王" "还款"
+  Assets:Bank:CMB                                   1500.00 CNY
+  Assets:Receivable:Personal                       -1500.00 CNY
+    person: "小王"
+
 2025-08-16 * "美团外卖" "晚餐"
   Expenses:Food:Dining                                38.90 CNY
   Liabilities:CreditCard:CMB                         -38.90 CNY
@@ -2820,7 +2903,7 @@
   Expenses:Transit:Taxi                               26.20 CNY
   Assets:EWallet:Alipay                              -26.20 CNY
 
-2025-08-18 * "网易云音乐" "会员"
+2025-08-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -2868,7 +2951,7 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-08-20 * "示例科技有限公司" "差旅报销 5 笔" #reimbursed ^reimburse-20250820
+2025-08-20 * "示例科技有限公司" "差旅报销 5 笔" #reimbursement ^reimburse-shili-20250820
   Assets:Bank:CMB                                    315.20 CNY
   Assets:Receivable:Reimbursement                   -315.20 CNY
 
@@ -2916,9 +2999,13 @@
   Expenses:Food:Dining                               215.30 CNY
   Liabilities:CreditCard:CMB                        -215.30 CNY
 
-2025-08-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-08-25 * "示例科技有限公司" "2025-08 工资" ^salary-shili-202508
+  payslip_days: 21
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-08-25 * "包子铺" "早餐"
   Expenses:Food:Meals                                  9.30 CNY
@@ -2968,8 +3055,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-08-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-08-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     73.70 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -73.70 CNY
 
 2025-08-29 * "包子铺" "早餐"
@@ -3028,11 +3117,11 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-09-03 * "中国联通" "话费"
+2025-09-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-09-03 * "Apple" "iCloud+"
+2025-09-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -3188,6 +3277,11 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
+2025-09-15 * "小王" "还款"
+  Assets:Bank:CMB                                   1500.00 CNY
+  Assets:Receivable:Personal                       -1500.00 CNY
+    person: "小王"
+
 2025-09-16 * "包子铺" "早餐"
   Expenses:Food:Meals                                  9.00 CNY
   Assets:EWallet:Alipay                               -9.00 CNY
@@ -3212,7 +3306,7 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-09-18 * "网易云音乐" "会员"
+2025-09-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -3228,8 +3322,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-09-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-09-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     84.60 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -84.60 CNY
 
 2025-09-19 * "食堂" "午餐"
@@ -3244,8 +3340,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-09-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-09-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     69.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -69.10 CNY
 
 2025-09-20 * "海底捞" "晚餐"
@@ -3261,8 +3359,8 @@
   Assets:Cash                                        -40.20 CNY
 
 2025-09-21 * "招商银行" "活期利息"
-  Assets:Bank:CMB                                    144.53 CNY
   Income:Invest:Interest                            -144.53 CNY
+  Assets:Bank:CMB                                    144.53 CNY
 
 2025-09-21 * "海底捞" "晚餐"
   Expenses:Food:Dining                               225.60 CNY
@@ -3288,8 +3386,10 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-09-23 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251020
+2025-09-23 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251020
   Assets:Receivable:Reimbursement                     40.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -40.40 CNY
 
 2025-09-24 * "全家" "早餐"
@@ -3304,9 +3404,13 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-09-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-09-25 * "示例科技有限公司" "2025-09 工资" ^salary-shili-202509
+  payslip_days: 22
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-09-25 * "麦当劳" "早餐"
   Expenses:Food:Meals                                 20.40 CNY
@@ -3353,8 +3457,8 @@
   Assets:EWallet:WeChat                             -281.10 CNY
 
 2025-09-28 * "IBKR" "VOO 分红"
-  Assets:Brokerage:IBKR:Cash                          30.60 USD
   Income:Invest:Dividend                             -30.60 USD
+  Assets:Brokerage:IBKR:Cash                          30.60 USD
 
 2025-09-28 * "滴滴出行" "打车"
   Expenses:Transit:Taxi                               37.50 CNY
@@ -3424,8 +3528,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-10-02 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251220
+2025-10-02 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251220
   Assets:Receivable:Reimbursement                     75.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -75.10 CNY
 
 2025-10-02 * "携程" "机票 上海-东京" #trip-tokyo
@@ -3436,11 +3542,11 @@
   Expenses:Travel:Hotel                             4850.00 CNY
   Liabilities:CreditCard:CMB                       -4850.00 CNY
 
-2025-10-03 * "中国联通" "话费"
+2025-10-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-10-03 * "Apple" "iCloud+"
+2025-10-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -3460,6 +3566,14 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
+2025-10-03 * "一兰拉面" "午餐" #trip-tokyo
+  Expenses:Food:Dining                                 1180 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -56.88 CNY
+
+2025-10-03 * "Lawson" "饮料零食" #trip-tokyo
+  Expenses:Food:Dining                                  640 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -30.85 CNY
+
 2025-10-04 * "美团外卖" "晚餐"
   Expenses:Food:Dining                                35.40 CNY
   Liabilities:CreditCard:CMB                         -35.40 CNY
@@ -3468,9 +3582,25 @@
   Expenses:Shopping:Household                        113.27 CNY
   Liabilities:CreditCard:CMB                        -113.27 CNY
 
+2025-10-04 * "一兰拉面" "午餐" #trip-tokyo
+  Expenses:Food:Dining                                 1200 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -57.84 CNY
+
+2025-10-04 * "Lawson" "饮料零食" #trip-tokyo
+  Expenses:Food:Dining                                  660 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -31.81 CNY
+
 2025-10-05 * "滴滴出行" "打车"
   Expenses:Transit:Taxi                               34.70 CNY
   Assets:EWallet:Alipay                              -34.70 CNY
+
+2025-10-05 * "一兰拉面" "午餐" #trip-tokyo
+  Expenses:Food:Dining                                 1220 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -58.80 CNY
+
+2025-10-05 * "Lawson" "饮料零食" #trip-tokyo
+  Expenses:Food:Dining                                  680 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -32.78 CNY
 
 2025-10-06 * "美团外卖" "午餐"
   Expenses:Food:Meals                                 33.30 CNY
@@ -3479,6 +3609,14 @@
 2025-10-06 * "地铁" "通勤"
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
+
+2025-10-06 * "一兰拉面" "午餐" #trip-tokyo
+  Expenses:Food:Dining                                 1240 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -59.77 CNY
+
+2025-10-06 * "Lawson" "饮料零食" #trip-tokyo
+  Expenses:Food:Dining                                  700 JPY @ 0.0482 CNY
+  Liabilities:CreditCard:CMB                         -33.74 CNY
 
 2025-10-07 * "食堂" "午餐"
   Expenses:Food:Meals                                 20.20 CNY
@@ -3525,8 +3663,8 @@
   Assets:EWallet:Alipay                              -31.70 CNY
 
 2025-10-10 * "招商银行信用卡" "还款" #transfer
-  Liabilities:CreditCard:CMB                        9599.82 CNY
-  Assets:Bank:CMB                                  -9599.82 CNY
+  Liabilities:CreditCard:CMB                        9962.29 CNY
+  Assets:Bank:CMB                                  -9962.29 CNY
 
 2025-10-10 * "沙县小吃" "午餐"
   Expenses:Food:Meals                                 22.40 CNY
@@ -3541,6 +3679,7 @@
   Assets:EWallet:Alipay                               -4.00 CNY
 
 2025-10-12 * "IBKR" "换汇入金" #fx
+  exchange_rate: "1 USD = 7.0882 CNY"
   Assets:Brokerage:IBKR:Cash                        5000.00 USD @ 7.0882 CNY
   Assets:Bank:CMB                                 -35441.00 CNY
 
@@ -3632,7 +3771,7 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-10-18 * "网易云音乐" "会员"
+2025-10-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -3652,7 +3791,7 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-10-20 * "示例科技有限公司" "差旅报销 7 笔" #reimbursed ^reimburse-20251020
+2025-10-20 * "示例科技有限公司" "差旅报销 7 笔" #reimbursement ^reimburse-shili-20251020
   Assets:Bank:CMB                                    447.80 CNY
   Assets:Receivable:Reimbursement                   -447.80 CNY
 
@@ -3720,9 +3859,13 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-10-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-10-25 * "示例科技有限公司" "2025-10 工资" ^salary-shili-202510
+  payslip_days: 23
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-10-25 * "海底捞" "晚餐"
   Expenses:Food:Dining                               236.50 CNY
@@ -3800,11 +3943,11 @@
   Expenses:Food:Dining                                27.50 CNY
   Assets:EWallet:Alipay                              -27.50 CNY
 
-2025-11-03 * "中国联通" "话费"
+2025-11-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-11-03 * "Apple" "iCloud+"
+2025-11-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -3960,7 +4103,7 @@
   Expenses:Food:Meals                                 23.20 CNY
   Assets:EWallet:Alipay                              -23.20 CNY
 
-2025-11-18 * "网易云音乐" "会员"
+2025-11-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -3996,8 +4139,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-11-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251220
+2025-11-19 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251220
   Assets:Receivable:Reimbursement                     45.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -45.40 CNY
 
 2025-11-20 * "美团外卖" "午餐"
@@ -4040,13 +4185,20 @@
   Expenses:Food:Drinks                                15.10 CNY
   Assets:EWallet:Alipay                              -15.10 CNY
 
-2025-11-24 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251220
+2025-11-24 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251220
   Assets:Receivable:Reimbursement                     63.60 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -63.60 CNY
 
-2025-11-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-11-25 * "示例科技有限公司" "2025-11 工资" ^salary-shili-202511
+  payslip_days: 20
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 请假扣除工资 600.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Income:Salary:Deduction                            600.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25150.00 CNY
 
 2025-11-25 * "麦当劳" "早餐"
   Expenses:Food:Meals                                 20.10 CNY
@@ -4112,8 +4264,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-11-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20251220
+2025-11-28 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20251220
   Assets:Receivable:Reimbursement                     45.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -45.40 CNY
 
 2025-11-28 * "Apple" "配件"
@@ -4164,11 +4318,11 @@
   Expenses:Shopping:Clothing                         204.63 CNY
   Liabilities:CreditCard:CMB                        -204.63 CNY
 
-2025-12-03 * "中国联通" "话费"
+2025-12-03 * "中国联通" "话费" ^sub-unicom
   Expenses:Subscription:Phone                         59.00 CNY
   Assets:EWallet:Alipay                              -59.00 CNY
 
-2025-12-03 * "Apple" "iCloud+"
+2025-12-03 * "Apple" "iCloud+" ^sub-icloud
   Expenses:Subscription:Cloud                         21.00 CNY
   Liabilities:CreditCard:CMB                         -21.00 CNY
 
@@ -4192,8 +4346,10 @@
   Expenses:Transit:Metro                               4.00 CNY
   Assets:EWallet:Alipay                               -4.00 CNY
 
-2025-12-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20260220
+2025-12-04 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20260220
   Assets:Receivable:Reimbursement                     47.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -47.40 CNY
 
 2025-12-05 * "全家" "早餐"
@@ -4272,8 +4428,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-12-11 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20260220
+2025-12-11 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20260220
   Assets:Receivable:Reimbursement                     50.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -50.10 CNY
 
 2025-12-11 * "京东" "日用品"
@@ -4320,8 +4478,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-12-15 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20260220
+2025-12-15 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20260220
   Assets:Receivable:Reimbursement                     60.10 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -60.10 CNY
 
 2025-12-16 * "西贝" "午餐"
@@ -4344,7 +4504,7 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-12-18 * "网易云音乐" "会员"
+2025-12-18 * "网易云音乐" "会员" ^sub-163music
   Expenses:Subscription:Streaming                     15.00 CNY
   Assets:EWallet:WeChat                              -15.00 CNY
 
@@ -4360,8 +4520,10 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-12-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20260220
+2025-12-18 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20260220
   Assets:Receivable:Reimbursement                     42.40 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -42.40 CNY
 
 2025-12-19 * "包子铺" "早餐"
@@ -4380,13 +4542,13 @@
   Expenses:Food:Groceries                             80.90 CNY
   Assets:EWallet:WeChat                              -80.90 CNY
 
-2025-12-20 * "示例科技有限公司" "差旅报销 4 笔" #reimbursed ^reimburse-20251220
+2025-12-20 * "示例科技有限公司" "差旅报销 4 笔" #reimbursement ^reimburse-shili-20251220
   Assets:Bank:CMB                                    229.50 CNY
   Assets:Receivable:Reimbursement                   -229.50 CNY
 
 2025-12-21 * "招商银行" "活期利息"
-  Assets:Bank:CMB                                    104.88 CNY
   Income:Invest:Interest                            -104.88 CNY
+  Assets:Bank:CMB                                    104.88 CNY
 
 2025-12-21 * "淘宝" "衣服"
   Expenses:Shopping:Clothing                         287.59 CNY
@@ -4432,9 +4594,13 @@
   Expenses:Transit:Metro                               5.00 CNY
   Assets:EWallet:Alipay                               -5.00 CNY
 
-2025-12-25 * "示例科技有限公司" "工资"
-  Assets:Bank:CMB                                  26800.00 CNY
-  Income:Salary                                   -26800.00 CNY
+2025-12-25 * "示例科技有限公司" "2025-12 工资" ^salary-shili-202512
+  payslip_days: 23
+  payslip_items: "基本工资 26000.00; 餐补 800.00; 交通补贴 400.00; 代扣个税 1450.00"
+  Income:Salary:Base                              -26000.00 CNY
+  Income:Salary:Allowance                          -1200.00 CNY
+  Expenses:Government:IncomeTax                     1450.00 CNY
+  Assets:Bank:CMB                                  25750.00 CNY
 
 2025-12-25 * "食堂" "午餐"
   Expenses:Food:Meals                                 15.00 CNY
@@ -4473,8 +4639,8 @@
   Assets:Cash                                        -33.70 CNY
 
 2025-12-28 * "IBKR" "VOO 分红"
-  Assets:Brokerage:IBKR:Cash                          40.80 USD
   Income:Invest:Dividend                             -40.80 USD
+  Assets:Brokerage:IBKR:Cash                          40.80 USD
 
 2025-12-29 * "麦当劳" "早餐"
   Expenses:Food:Meals                                 18.20 CNY
@@ -4500,8 +4666,10 @@
   Expenses:Transit:Metro                               6.00 CNY
   Assets:EWallet:Alipay                               -6.00 CNY
 
-2025-12-30 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-20260220
+2025-12-30 * "滴滴出行" "客户拜访打车" #reimbursed ^reimburse-shili-20260220
   Assets:Receivable:Reimbursement                     57.30 CNY
+    category: "Expenses:Transit:Taxi"
+    voucher: "发票"
   Assets:EWallet:Alipay                              -57.30 CNY
 
 2025-12-30 * "宜家" "家居"
@@ -4521,5 +4689,5 @@
   Assets:EWallet:Alipay                               -6.00 CNY
 
 2025-12-31 * "招商银行" "信用卡积分返现"
-  Liabilities:CreditCard:CMB                          50.00 CNY
   Income:Rewards                                     -50.00 CNY
+  Liabilities:CreditCard:CMB                          50.00 CNY

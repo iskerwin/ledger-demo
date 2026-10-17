@@ -4,6 +4,9 @@ option "operating_currency" "CNY"
 option "booking_method" "FIFO"
 
 include "config/commodities.bean"
+include "config/subscriptions.bean"
+include "config/budgets.bean"
+include "config/events.bean"
 include "accounts/accounts.bean"
 include "accounts/balance.bean"
 include "journals/2025.bean"
@@ -17,7 +20,7 @@ include "prices.bean"
   ORDER BY date DESC"
 
 2025-01-01 query "各报销批次" "
-  SELECT links, COUNT(*) AS n, SUM(position) AS total
-  WHERE account = 'Assets:Receivable:Reimbursement' AND 'reimbursed' IN tags
-  GROUP BY links
-  ORDER BY links"
+  SELECT STR(links) AS batch, COUNT(*) AS n, SUM(position) AS total
+  WHERE account = 'Assets:Receivable:Reimbursement' AND 'reimbursement' IN tags
+  GROUP BY batch
+  ORDER BY batch"
