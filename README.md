@@ -1,68 +1,72 @@
-# Ledger X 演示账本
+# Ledger X demo ledger
 
-这是 [Ledger X iOS App](https://github.com/iskerwin/ledger-x) 的统一演示数据源。所有人名、公司和金额均为虚构，用来体验记账、投资、订阅、预算、工资、往来款与报销等功能。
+English | [简体中文](README.zh-CN.md)
 
-账本以原 `ledger-x/Ledger/Demo` 为基础整理，包含 **2025-01-01 至 2026-10-17 的 2,037 笔交易**、110 条余额断言、141 条价格记录，以及 14 笔带 `#demo-classic` 标签的经典示例。后续在本仓库维护数据，不再维护 App 内的一份副本。
+The single demo data source for the [Ledger X iOS app](https://github.com/iskerwin/ledger-x). Every name, company and amount is made up, there to try out bookkeeping, investments, subscriptions, budgets, salary, personal IOUs and reimbursements.
 
-## 在 App 中体验
+![Ledger X with this demo ledger open](https://raw.githubusercontent.com/iskerwin/ledger-x/main/docs/promo/gallery.png)
 
-支持在线演示账本的新版本 App：点「先看看演示账本」，首次联网下载本仓库的公开数据，无需账号或 Token。下载后可离线查看和编辑；改动只保存在手机上，不写回本仓库。点「重置演示账本」会下载最新数据，成功后覆盖本机演示修改；下载失败则保留旧数据。旧版本 App 仍使用安装包自带的演示账本。
+The ledger grew out of the former `ledger-x/Ledger/Demo` and holds **2,037 transactions from 2025-01-01 to 2026-10-17**, 110 balance assertions, 141 price records, and 14 classic examples tagged `#demo-classic`. The data is maintained here from now on; the copy inside the app is no longer kept up.
 
-想体验真实的 Git 同步：
+## Try it in the app
 
-1. Fork 本仓库到自己的 GitHub 账号。
-2. 创建仅能访问该 Fork 的 Fine-grained Token，赋予 Contents: Read and write；如需查看校验状态，再赋予 Actions: Read-only。
-3. 在 App 中连接你的用户名、仓库 `ledger-demo`、分支 `main` 和 Token。
+App versions that support the online demo ledger: tap **Try the demo ledger**, and the public data in this repository downloads on first use, with no account or token. After that it can be viewed and edited offline; changes stay on the phone and are never written back here. **Reset the demo** downloads the latest data and, once that succeeds, replaces your local demo changes; if the download fails, the old data is kept. Older app versions still use the demo ledger bundled in the package.
 
-此时 App 的修改会提交到你的 Fork。不要把 Token 写入账本文件或 App 源码。
+To try real Git sync:
 
-## 经典示例：可以照着体验
+1. Fork this repository to your GitHub account.
+2. Create a fine-grained token that can access only that fork, with Contents: Read and write; to see check status, also Actions: Read-only.
+3. In the app, connect with your username, repository `ledger-demo`, branch `main` and the token.
 
-在明细搜索 `#demo-classic`，或选择已保存的「经典示例」搜索。
+Changes in the app are then committed to your fork. Never put the token in ledger files or app source.
 
-| 场景 | 日期和入口 | 可观察的结果 |
+## Classic examples to follow along
+
+Search the journal for `#demo-classic`, or pick the saved search 经典示例 (classic examples).
+
+| Scenario | Date and where | What you'll see |
 | --- | --- | --- |
-| 混合付款与部分退款 | 10 月 16–17 日，搜索 `^refund-uniqlo-20261016` | 原价 600 元，信用卡付 450、支付宝付 150；两次退款 120 和 80 元，净支出 400 元，退款分别回到原付款账户 |
-| AA 分摊与分次还款 | 10 月 16–17 日，个人往来页 | 先支付 90 元结清小陈此前代买的电影票；聚餐 480 元三人均摊，自己只计 160 元支出。小陈先还 100 元，尚欠 60 元；小林尚欠 160 元 |
-| 多笔垫付、分批报销 | 搜索 `^reimburse-shili-20261017` | 酒店 680 元、车票 200 元，收到 500 和 380 元两笔回款后结清；垫款和回款不计个人消费或收入 |
-| 出差事件与待报销 | 搜索 `#trip-hangzhou`，事件页「杭州出差」 | 已结清酒店和车票，返程打车 86 元仍待报销，可继续体验登记回款 |
-| 外币订阅 | 订阅页「GitHub Copilot」 | 10 月 16 日支付 10 USD，查看原币扣费、人民币折算和下次续费 |
-| 订阅升级补差 | 搜索 `^sub-icloud` | 10 月 17 日补差 20 元，标记 `topup: TRUE`，可查看补差与正常续费的区别 |
-| 试用期与手动续费 | 订阅页「效率工具（试用）」 | 10 月 23 日试用结束，月费 38 元，尚未扣费；体验到期提醒和未来现金流。提醒状态随当前日期变化 |
-| 一张小票拆分类 | 10 月 17 日「盒马」 | 食材 128 元、日用品 52 元，同一笔支付宝付款 180 元，分别进入两个支出分类 |
+| Split payment and partial refunds | Oct 16–17, search `^refund-uniqlo-20261016` | ¥600 list price, ¥450 by credit card and ¥150 by Alipay; two refunds of ¥120 and ¥80 leave ¥400 spent, each refund going back to the account that paid |
+| Even split and paying back in parts | Oct 16–17, the personal IOUs page | First pay ¥90 to settle the movie tickets Xiao Chen bought earlier; a ¥480 dinner split three ways counts only ¥160 as your spending. Xiao Chen pays back ¥100 and still owes ¥60; Xiao Lin still owes ¥160 |
+| Several advances, reimbursed in batches | Search `^reimburse-shili-20261017` | Hotel ¥680 and train ¥200, settled after two repayments of ¥500 and ¥380; advances and repayments count as neither personal spending nor income |
+| Business trip with an open claim | Search `#trip-hangzhou`, event 杭州出差 (Hangzhou trip) | Hotel and train settled; the ¥86 taxi home is still awaiting reimbursement, so you can try recording the repayment |
+| Foreign currency subscription | Subscriptions page, GitHub Copilot | 10 USD paid on Oct 16: the charge in its own currency, the CNY conversion and the next renewal |
+| Subscription upgrade top-up | Search `^sub-icloud` | A ¥20 top-up on Oct 17 marked `topup: TRUE`, to compare with a normal renewal |
+| Trial and manual renewal | Subscriptions page, 效率工具（试用）(productivity tool, trial) | Trial ends Oct 23, ¥38 a month, not yet charged; try the expiry reminder and future cash flow. Reminder state changes with today's date |
+| One receipt, two categories | Oct 17, 盒马 (Hema) | Groceries ¥128 and household goods ¥52, one ¥180 Alipay payment split into two expense categories |
 
-## 其他功能数据
+## Other data
 
-- **日常收支**：餐饮、咖啡、通勤、房租、水电、购物、医疗、红包、慈善。
-- **账户与信用卡**：招行、工行、现金、支付宝、微信；信用卡账单日 1 日、还款日 10 日，额度 50,000 元，含还款和积分返现。
-- **投资**：USD 换汇、VOO 定投、AAPL 买卖、FIFO 成本批次、分红与已实现/未实现收益；价格为虚构历史数据。
-- **工资与公司往来**：基本工资、补贴、代扣个税、请假扣款、少发与补发、公司备用金。
-- **个人往来**：借出、还款、AA 和朋友代付，按 `person:` 区分对象。
-- **预算**：餐饮每月 3,500 元、购物 1,500 元、交通 600 元、订阅 300 元。
-- **订阅历史**：iCloud+ 调价、网易云音乐取消、坚果云年费。
-- **旅行**：成都、东京、杭州三个事件；东京含 JPY 消费。
-- **待确认**：2026-10-06 京东显示器 1,699 元，使用 `!` 标记。
-- **报表与查询**：损益、资产负债、净资产走势、预算、现金流预测；主账本 2 条查询，独立文件 5 条查询。
+- **Everyday spending and income**: dining, coffee, commuting, rent, utilities, shopping, medical, red envelopes, charity.
+- **Accounts and credit card**: China Merchants Bank, ICBC, cash, Alipay, WeChat; credit card statement day 1, due day 10, limit ¥50,000, with payments and points cashback.
+- **Investments**: USD exchange, recurring VOO purchases, buying and selling AAPL, FIFO cost lots, dividends and realized / unrealized gains; prices are made-up history.
+- **Salary and employer**: base pay, allowances, withheld income tax, leave deductions, short and back pay, company petty cash.
+- **Personal IOUs**: lending, repayments, splits and friends paying for you, told apart by `person:`.
+- **Budgets**: dining ¥3,500, shopping ¥1,500, transport ¥600 and subscriptions ¥300 a month.
+- **Subscription history**: an iCloud+ price change, NetEase Cloud Music cancelled, Nutstore yearly fee.
+- **Travel**: three events, Chengdu, Tokyo and Hangzhou; Tokyo includes JPY spending.
+- **To confirm**: a ¥1,699 JD.com monitor on 2026-10-06, flagged `!`.
+- **Reports and queries**: income statement, balance sheet, net worth trend, budgets, cash-flow forecast; 2 queries in the main ledger and 5 in a separate file.
 
-## 文件结构
+## Files
 
 ```text
-main.bean                   入口、选项、include 和查询
-ledger-x.json               App 布局、工资模板、扫码卡号映射、保存的搜索
-accounts/accounts.bean      账户、分类和信用卡属性
-accounts/balance.bean       历史余额断言
+main.bean                   entry point, options, includes and queries
+ledger-x.json               app layout, salary template, card number mapping for scanning, saved searches
+accounts/accounts.bean      accounts, categories and credit card attributes
+accounts/balance.bean       historical balance assertions
 config/commodities.bean     CNY / USD / JPY / VOO / AAPL
-config/budgets.bean          月度预算
-config/subscriptions.bean   订阅及变更历史
-config/events.bean          旅行和出差事件
-journals/2025.bean           2025 年交易
-journals/2026.bean           2026 年交易和经典示例
-prices.bean                 历史汇率、股价
-queries/reports.bql          常用 BQL 查询
-tools/verify.py              官方校验、查询和关键示例金额验证
+config/budgets.bean         monthly budgets
+config/subscriptions.bean   subscriptions and their change history
+config/events.bean          travel and business trip events
+journals/2025.bean          2025 transactions
+journals/2026.bean          2026 transactions and the classic examples
+prices.bean                 historical exchange rates and stock prices
+queries/reports.bql         common BQL queries
+tools/verify.py             official checks, queries and key example amounts
 ```
 
-## 校验与维护
+## Checking and maintenance
 
 ```bash
 pip install beancount beanquery fava
@@ -71,6 +75,6 @@ python3 tools/verify.py
 fava main.bean
 ```
 
-推送和 PR 会自动执行校验。新增示例应检查分录平衡、历史余额断言、关联链接和查询，并更新体验指南。新增历史交易可能影响后续余额断言；新场景优先写在最后一次断言之后。演示中有意保留未收个人往来、待报销垫款和待确认订单。
+Pushes and PRs run the checks automatically. A new example should be checked for balanced postings, historical balance assertions, links and queries, and the walkthrough above updated. New historical transactions can affect later balance assertions, so put new scenarios after the last assertion. Unpaid personal IOUs, open reimbursements and an unconfirmed order are left in the demo on purpose.
 
-旧 `tools/generate.py` 已移除，避免生成旧版数据覆盖预算、订阅、工资和往来示例。需要恢复体验数据时，重新获取本仓库，或在 App 内重置演示账本。手机本地修改不会自动跟随公共仓库更新。
+The old `tools/generate.py` was removed so that generating old data can't overwrite the budget, subscription, salary and IOU examples. To get the demo data back, fetch this repository again, or reset the demo ledger in the app. Local changes on a phone don't follow updates to the public repository automatically.
