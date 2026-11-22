@@ -69,10 +69,10 @@ tools/verify.py              官方校验、查询和关键示例金额验证
 ## 校验与维护
 
 ```bash
-pip install beancount beanquery fava
-bean-check main.bean
-python3 tools/verify.py
-fava main.bean
+uv sync                      # beancount, beanquery, fava from uv.lock
+uv run bean-check main.bean
+uv run tools/verify.py
+uv run fava main.bean
 ```
 
 推送和 PR 会自动执行校验。新增示例应检查分录平衡、历史余额断言、关联链接和查询，并更新体验指南。新增历史交易可能影响后续余额断言；新场景优先写在最后一次断言之后。演示中有意保留未收个人往来、待报销垫款和待确认订单。

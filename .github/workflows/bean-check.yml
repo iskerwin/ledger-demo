@@ -12,14 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install beancount beanquery
+      # Python 和依赖按 .python-version / uv.lock 安装，与本机 uv sync 一致
+      - uses: astral-sh/setup-uv@v10
+      - run: uv sync --frozen --no-dev
       - name: bean-check
-        run: bean-check main.bean
+        run: uv run bean-check main.bean
       - name: Smoke-test the saved queries
         run: |
-          bean-query main.bean "SELECT account, SUM(position) WHERE account ~ '^Assets:' GROUP BY account ORDER BY account"
+          uv run bean-query main.bean "SELECT account, SUM(position) WHERE account ~ '^Assets:' GROUP BY account ORDER BY account"
       - name: Verify demo scenarios and all saved queries
-        run: python tools/verify.py
+        run: uv run tools/verify.py

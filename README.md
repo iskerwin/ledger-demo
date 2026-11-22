@@ -69,10 +69,10 @@ tools/verify.py             official checks, queries and key example amounts
 ## Checking and maintenance
 
 ```bash
-pip install beancount beanquery fava
-bean-check main.bean
-python3 tools/verify.py
-fava main.bean
+uv sync                      # beancount, beanquery, fava from uv.lock
+uv run bean-check main.bean
+uv run tools/verify.py
+uv run fava main.bean
 ```
 
 Pushes and PRs run the checks automatically. A new example should be checked for balanced postings, historical balance assertions, links and queries, and the walkthrough above updated. New historical transactions can affect later balance assertions, so put new scenarios after the last assertion. Unpaid personal IOUs, open reimbursements and an unconfirmed order are left in the demo on purpose.
