@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # Python 和依赖按 .python-version / uv.lock 安装，与本机 uv sync 一致
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.4.0
       - run: uv sync --frozen --no-dev
       - name: bean-check
         run: uv run bean-check main.bean
