@@ -11,7 +11,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # Python 和依赖按 .python-version / uv.lock 安装，与本机 uv sync 一致
       - uses: astral-sh/setup-uv@v10.4.0
       - run: uv sync --frozen --no-dev
