@@ -78,3 +78,7 @@ uv run fava main.bean
 Pushes and PRs run the checks automatically. A new example should be checked for balanced postings, historical balance assertions, links and queries, and the walkthrough above updated. New historical transactions can affect later balance assertions, so put new scenarios after the last assertion. Unpaid personal IOUs, open reimbursements and an unconfirmed order are left in the demo on purpose.
 
 The old `tools/generate.py` was removed so that generating old data can't overwrite the budget, subscription, salary and IOU examples. To get the demo data back, fetch this repository again, or reset the demo ledger in the app. Local changes on a phone don't follow updates to the public repository automatically.
+
+## License
+
+[MIT](LICENSE)
